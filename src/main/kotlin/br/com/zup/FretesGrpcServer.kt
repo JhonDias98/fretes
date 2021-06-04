@@ -69,5 +69,14 @@ class FretesGrpcServer : FretesServiceGrpc.FretesServiceImplBase(){
                 StatusProto.toStatusRuntimeException(statusProto)
             )
         }
+
+        val response = CalculaFreteResponse.newBuilder()
+            .setCep(request!!.cep)
+            .setValor(Random.nextDouble(from = 0.0, until = 140.0))
+            .build()
+        logger.info("Frete calculado para o cep ${response.cep}, no valor de R$ ${response.valor}")
+
+        responseObserver!!.onNext(response)
+        responseObserver.onCompleted()
     }
 }
