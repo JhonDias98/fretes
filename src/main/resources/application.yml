@@ -1,3 +1,18 @@
 micronaut:
   application:
     name: fretes
+
+#Habilitar Health
+grpc:
+  server:
+    health:
+      enabled: true
+#Mostrar outros endpoints
+endpoints:
+  all:
+    port: 8085 #Porta para acessar os endpoints
+    sensitive: true
+  health:
+    enabled: true
+    sensitive: false #Acessivel para usuários logados e não logados
+    details-visible: ANONYMOUS #Quem pode ver os detalhes, ANONYMOUS, AUTHENTICATED, NEVER
